@@ -1,0 +1,21 @@
+{
+  "name": "youtube-autopilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered YouTube channel management SaaS",
+  "workspaces": ["apps/*"],
+  "engines": {
+    "node": ">=26.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -n WEB,API -c cyan,green \"npm:dev:web\" \"npm:dev:api\"",
+    "dev:web": "npm run dev --workspace=@autopilot/web",
+    "dev:api": "npm run dev --workspace=@autopilot/api",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
